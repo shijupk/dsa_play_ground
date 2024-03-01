@@ -126,7 +126,8 @@ namespace SinglyLinkedList
             {
 
                 slow = slow->next;
-                if(fast->next) return nullptr;
+                if (fast->next)
+                    return nullptr;
                 fast = fast->next->next;
                 if (slow == fast)
                 {
@@ -157,7 +158,7 @@ namespace SinglyLinkedList
             Node<T> *slow = head;
             Node<T> *fast = head;
 
-            while(fast != nullptr && fast->next !=nullptr)
+            while (fast != nullptr && fast->next != nullptr)
             {
                 slow = slow->next;
 
@@ -168,91 +169,104 @@ namespace SinglyLinkedList
 
 #pragma endregion problem_3
 #pragma region problem_4
-//Merge Two Sorted Linked Lists: Merge two sorted linked lists into a single sorted linked list.
+// Merge Two Sorted Linked Lists: Merge two sorted linked lists into a single sorted linked list.
 #pragma endregion
 
 #pragma region problem_5
-//Remove Nth Node From End of List: Remove the nth node from the end of a linked list.
+        // Remove Nth Node From End of List: Remove the nth node from the end of a linked list.
 
-void RemoveNthNodeFormEndOfList()
-{
+        T RemoveNthNodeFormEndOfList(T k)
+        {
+            Node<T> *slow = head;
+            Node<T> *fast = head;
 
-    
-}
+            while (k > 0)
+            {
+                fast = fast->next;
+                k--;
+            }
+
+            while (fast != nullptr)
+            {
+                slow = slow->next;
+                fast = fast->next;
+            }
+
+            return slow->data;
+        }
 #pragma endregion
 
 #pragma region problem_6
-//Remove Duplicates from Sorted List: Remove duplicates from a sorted linked list.
+// Remove Duplicates from Sorted List: Remove duplicates from a sorted linked list.
+
 #pragma endregion
 
 #pragma region problem_7
-//Intersection of Two Linked Lists: Find the node at which two linked lists intersect.
+        // Intersection of Two Linked Lists: Find the node at which two linked lists intersect.
 
 #pragma endregion
 
 #pragma region problem_8
-//Palindrome Linked List: Determine whether a linked list is a palindrome.
+        // Palindrome Linked List: Determine whether a linked list is a palindrome.
 
 #pragma endregion
 
 #pragma region problem_9
-//Merge K Sorted Lists: Merge k sorted linked lists into one sorted linked list.
+        // Merge K Sorted Lists: Merge k sorted linked lists into one sorted linked list.
 
 #pragma endregion
 
 #pragma region problem_10
-//Copy List with Random Pointer: Create a deep copy of a linked list with each node containing an additional random pointer.
+// Copy List with Random Pointer: Create a deep copy of a linked list with each node containing an additional random pointer.
 #pragma endregion
 
 #pragma region problem_11
-//Swap Nodes in Pairs: Swap every two adjacent nodes in a linked list.
+// Swap Nodes in Pairs: Swap every two adjacent nodes in a linked list.
 #pragma endregion
 
 #pragma region problem_12
-//Rotate List: Rotate a linked list to the right by k places.
+        // Rotate List: Rotate a linked list to the right by k places.
 
 #pragma endregion
 
 #pragma region problem_13
-//Flatten a Multilevel Doubly Linked List: Flatten a multilevel doubly linked list into a single-level doubly linked list.
-
+        // Flatten a Multilevel Doubly Linked List: Flatten a multilevel doubly linked list into a single-level doubly linked list.
 
 #pragma endregion
 
 #pragma region problem_14
-//Reverse Nodes in k-Group: Reverse every k consecutive nodes in a linked list.
+        // Reverse Nodes in k-Group: Reverse every k consecutive nodes in a linked list.
 
 #pragma endregion
 
 #pragma region problem_15
 
-//Add Two Numbers Represented by Linked Lists: Given two numbers represented by linked lists, add them and return the result as a linked list.
+// Add Two Numbers Represented by Linked Lists: Given two numbers represented by linked lists, add them and return the result as a linked list.
 #pragma endregion
 
 #pragma region problem_16
-//LRU Cache using Linked List: Implement an LRU (Least Recently Used) cache using a linked list.
+        // LRU Cache using Linked List: Implement an LRU (Least Recently Used) cache using a linked list.
 
 #pragma endregion
 
 #pragma region problem_17
-//Split Linked List in Parts: Split a linked list into k parts of approximately equal size.
+        // Split Linked List in Parts: Split a linked list into k parts of approximately equal size.
 
 #pragma endregion
 
 #pragma region problem_18
-//Insert into a Sorted Circular Linked List: Insert a node into a sorted circular linked list.
+        // Insert into a Sorted Circular Linked List: Insert a node into a sorted circular linked list.
 
 #pragma endregion
 
 #pragma region problem_19
-//Convert Binary Search Tree to Sorted Doubly Linked List: Convert a binary search tree into a sorted doubly linked list.
+        // Convert Binary Search Tree to Sorted Doubly Linked List: Convert a binary search tree into a sorted doubly linked list.
 
 #pragma endregion
 
 #pragma region problem_20
-//Reverse Linked List in Groups of Given Size: Reverse a linked list in groups of a given size.
+// Reverse Linked List in Groups of Given Size: Reverse a linked list in groups of a given size.
 #pragma endregion
-
     };
 
 }
@@ -331,7 +345,7 @@ public:
 
     void static Test_FindMiddle()
     {
-         cout << "Start:: 3. Find the Middle of a Linked List" << endl;
+        cout << "Start:: 3. Find the Middle of a Linked List" << endl;
 
         SinglyLinkedList::LinkedList<int> list;
 
@@ -345,12 +359,37 @@ public:
         list.Add(70);
         list.Add(80);
         list.Add(100);
-         list.Add(110);
-          list.Add(120);
+        list.Add(110);
+        list.Add(120);
         list.Print();
 
-        auto result = list.FindMiddle();    
+        auto result = list.FindMiddle();
         cout << "Middle Element: " << result << endl;
+        cout << "End." << endl;
+    }
+
+    void static Test_RemoveNthNodeFormEndOfList()
+    {
+        cout << "Start:: 3. Remove Nth Node From End Of List" << endl;
+
+        SinglyLinkedList::LinkedList<int> list;
+
+        list.Add(10);
+        list.Add(20);
+        list.Add(30);
+        list.Add(40);
+        list.Add(90);
+        list.Add(60);
+        list.Add(50);
+        list.Add(70);
+        list.Add(80);
+        list.Add(100);
+        list.Add(110);
+        list.Add(120);
+        list.Print();
+
+        auto result = list.RemoveNthNodeFormEndOfList(6);
+        cout << 6 << "th elem from end Element: " << result << endl;
         cout << "End." << endl;
     }
 };
@@ -364,11 +403,13 @@ void main()
     cout << endl;
     Test::Test_IsCycle();
     cout << endl;
-    
-    //Fixme
-    //Test::Test_FirstNodeInCycle();
+
+    // Fixme
+    // Test::Test_FirstNodeInCycle();
 
     Test::Test_FindMiddle();
+
+    Test::Test_RemoveNthNodeFormEndOfList();
     cout << endl;
     cout << "Done!" << endl;
 }
